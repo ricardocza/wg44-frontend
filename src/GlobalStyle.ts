@@ -42,7 +42,7 @@ export const GlobalStyle = createGlobalStyle`
         justify-content: center;
         gap: 16px;
         height: calc(100% - var(--header-height));
-        padding: 8px;
+        padding: 8px 100px;
     }
 
 `

@@ -44,7 +44,7 @@ export const Graph = () => {
       };
 
     return (<StyledGraph>
-        <LineChart width={1000} height={550} data={data}   >
+        <LineChart width={925} height={550} data={data}   >
             <Line type="monotone" dataKey="closed_price" stroke="#8884d8" dot={{r:2}} activeDot={{r:4}} />
             <CartesianGrid stroke="#393945" strokeDasharray="0" />
             <XAxis dataKey="created_at" padding={{right: 100, left: 10}}/>

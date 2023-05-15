@@ -4,6 +4,8 @@ export const StyledGraphData = styled.div`
     display: flex;
     flex-direction: column;   
     justify-content: space-between;
+    align-items: flex-end;
+    max-width: 320px;
     width: 30%;
     height: var(--graph-height);
     margin: calc(1.5rem + 72px) 0 0;        

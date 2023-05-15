@@ -8,7 +8,8 @@ interface iGraphContext {
     setGraphData:  React.Dispatch<React.SetStateAction<iGraphData[]>>
     updateTimer: number
     setUpdateTimer: React.Dispatch<React.SetStateAction<number>>
-    loadData: () => void
+    loadData: () => void,
+    mean: Array<number>
 }
 interface iGraphProviderProps {
     children: React.ReactNode
@@ -43,23 +44,28 @@ export const GraphProvider = ({children}: iGraphProviderProps) => {
     const [countPredictions, setCountPredictions] = useState(0 as number)
     const [graphData, setGraphData] = useState([] as iGraphData[])
     const [updateTimer, setUpdateTimer] = useState(0 as number)
-
+    const [mean, setMean] = useState([])
 
     const loadData = async  () => {
         try{
             const response = await api.get("WINM23/list")
             const data = response.data.results.sort((a:any, b:any)=> b.id < a.id ? 1 : -1)            
             setCountPredictions(response.data.count)
-            setGraphData(data)            
+            setGraphData(data)              
+            
+            const mean_response = await api.get("WINM23/list/mean/")            
+            setMean(Object.values(mean_response.data))
+            
         }
         catch (error:any){
-            console.log(error.message)
+            console.log(error)
         }
     }
 
     
     return <GraphContext.Provider 
         value={{
+            mean,
             loadData,
             updateTimer,
             setUpdateTimer,
