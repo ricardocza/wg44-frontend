@@ -39,27 +39,27 @@ export const GraphData = () => {
         <div className="average-error">
         <div>
                 <p>{language === "PT" ? "Média de erro 1" : "Average error 1"}</p>
-                <p>{mean[0].toFixed(2) || 0}</p>
+                <p>{mean[0] ? mean[0].toFixed(2) : 0}</p>
             </div>
             <div>
                 <p>{language === "PT" ? "Média de erro 2" : "Average error 2"}</p>
-                <p>{mean[1].toFixed(2) || 0}</p>
+                <p>{mean[1] ? mean[1].toFixed(2) : 0}</p>
             </div>
             <div>
                 <p>{language === "PT" ? "Média de erro 3" : "Average error 3"}</p>
-                <p>{mean[2].toFixed(2) || 0}</p>
+                <p>{mean[2] ? mean[2].toFixed(2) : 0}</p>
             </div>
             <div>
                 <p>{language === "PT" ? "Média de erro 4" : "Average error 4"}</p>
-                <p>{mean[3].toFixed(2) || 0}</p>
+                <p>{mean[3] ? mean[3].toFixed(2) : 0}</p>
             </div>
             <div>
                 <p>{language === "PT" ? "Média de erro 5" : "Average error 5"}</p>
-                <p>{mean[4].toFixed(2) || 0}</p>
+                <p>{mean[4] ? mean[4].toFixed(2) : 0}</p>
             </div>
             <div>
                 <p>{language === "PT" ? "Média de erro 6" : "Average error 6"}</p>
-                <p>{mean[5].toFixed(2) || 0}</p>
+                <p>{mean[5] ? mean[5].toFixed(2) : 0}</p>
             </div>
         </div>
     </StyledGraphData>
