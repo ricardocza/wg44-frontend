@@ -47,7 +47,7 @@ export const GraphProvider = ({children}: iGraphProviderProps) => {
 
     const loadData = async  () => {
         try{
-            const response = await api.get("WINM23/")
+            const response = await api.get("WINM23/list")
             const data = response.data.results.sort((a:any, b:any)=> b.id < a.id ? 1 : -1)            
             setCountPredictions(response.data.count)
             setGraphData(data)            
