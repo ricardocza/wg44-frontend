@@ -1,4 +1,4 @@
-import React, {createContext, useState, useEffect} from "react"
+import React, {createContext, useState} from "react"
 import { api } from "../services/api"
 
 interface iGraphContext {
@@ -8,8 +8,12 @@ interface iGraphContext {
     setGraphData:  React.Dispatch<React.SetStateAction<iGraphData[]>>
     updateTimer: number
     setUpdateTimer: React.Dispatch<React.SetStateAction<number>>
-    loadData: () => void,
+    loadData: () => void
     mean: Array<number>
+    serverStatus: string
+    setServerStatus: React.Dispatch<React.SetStateAction<string>>
+    loading: boolean
+    setLoading: React.Dispatch<React.SetStateAction<boolean>>
 }
 interface iGraphProviderProps {
     children: React.ReactNode
@@ -45,9 +49,12 @@ export const GraphProvider = ({children}: iGraphProviderProps) => {
     const [graphData, setGraphData] = useState([] as iGraphData[])
     const [updateTimer, setUpdateTimer] = useState(0 as number)
     const [mean, setMean] = useState([])
+    const [serverStatus, setServerStatus] = useState("down" as string)
+    const [loading, setLoading] = useState(false as boolean)
 
     const loadData = async  () => {
         try{
+            setLoading(true)
             const response = await api.get("WINM23/list")
             const data = response.data.results.sort((a:any, b:any)=> b.id < a.id ? 1 : -1)            
             setCountPredictions(response.data.count)
@@ -55,16 +62,26 @@ export const GraphProvider = ({children}: iGraphProviderProps) => {
             
             const mean_response = await api.get("WINM23/list/mean/")            
             setMean(Object.values(mean_response.data))
-            
+
+            if (response.status === 200 && mean_response.status === 200) {
+                setServerStatus("up")
+            }
+            setLoading(false)
         }
         catch (error:any){
+            setLoading(false)
             console.log(error)
+            setServerStatus("down")
         }
     }
 
     
     return <GraphContext.Provider 
         value={{
+            loading,
+            setLoading,
+            serverStatus, 
+            setServerStatus,
             mean,
             loadData,
             updateTimer,
