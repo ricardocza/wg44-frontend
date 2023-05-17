@@ -7,9 +7,10 @@ export const StyledGraphSection = styled.div`
     width: 100%;
     color: var(--color-grey0);
     display: flex;  
-    column-gap: 2rem;
+    flex-direction: column;
+    row-gap: 2rem;
     border-radius: var(--b-radius8);
-    padding: 0 1rem 2rem;
+    padding: 0 2rem 2rem;
     
 `
 

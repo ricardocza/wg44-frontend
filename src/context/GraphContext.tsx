@@ -14,6 +14,10 @@ interface iGraphContext {
     setServerStatus: React.Dispatch<React.SetStateAction<string>>
     loading: boolean
     setLoading: React.Dispatch<React.SetStateAction<boolean>>
+    tickers: iTicker[]
+    setTickers: React.Dispatch<React.SetStateAction<iTicker[]>>
+    selectedAsset: string
+    setSelectedAsset: React.Dispatch<React.SetStateAction<string>>
 }
 interface iGraphProviderProps {
     children: React.ReactNode
@@ -42,6 +46,12 @@ export interface iGraphData {
     created_at: string
     
 }
+
+interface iTicker {
+    asset: string
+    last_price: number
+}
+
 export const GraphContext = createContext({} as iGraphContext)
 
 export const GraphProvider = ({children}: iGraphProviderProps) => {
@@ -51,22 +61,33 @@ export const GraphProvider = ({children}: iGraphProviderProps) => {
     const [mean, setMean] = useState([])
     const [serverStatus, setServerStatus] = useState("down" as string)
     const [loading, setLoading] = useState(false as boolean)
+    const [tickers, setTickers] = useState([] as iTicker[])
+    const [selectedAsset, setSelectedAsset] = useState("WINFUT" as string)
 
     const loadData = async  () => {
         try{
             setLoading(true)
-            const response = await api.get("WINM23/list")
-            const data = response.data.results.sort((a:any, b:any)=> b.id < a.id ? 1 : -1)            
+            const tickerResponse = await api.get("list/current-close")
+            const sortedData = tickerResponse.data.sort((a:iTicker, b:iTicker) => {
+                const nameA = a.asset.toUpperCase()
+                const nameB = b.asset.toUpperCase()
+                if (nameA > nameB) return -1
+                if (nameA < nameB) return 1
+                return 0;
+                
+            })
+            setTickers(sortedData)
+            
+            const response = await api.get(`${selectedAsset}/list`)            
+            const data = response.data.sort((a:any, b:any)=> b.id < a.id ? 1 : -1)            
             setCountPredictions(response.data.count)
             setGraphData(data)              
             
-            const mean_response = await api.get("WINM23/list/mean/")            
-            setMean(Object.values(mean_response.data))
+            const meanResponse = await api.get(`${selectedAsset}/list/mean/`)            
+            setMean(Object.values(meanResponse.data))
 
-            if (response.status === 200 && mean_response.status === 200) {
-                setServerStatus("up")
-            }
             setLoading(false)
+            setServerStatus("up")
         }
         catch (error:any){
             setLoading(false)
@@ -78,6 +99,10 @@ export const GraphProvider = ({children}: iGraphProviderProps) => {
     
     return <GraphContext.Provider 
         value={{
+            selectedAsset,
+            setSelectedAsset,
+            tickers,
+            setTickers,
             loading,
             setLoading,
             serverStatus, 

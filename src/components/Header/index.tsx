@@ -20,22 +20,16 @@ export const Header = () => {
     }
     return( <StyledMenu>
         <ul>
-            <li onMouseEnter={() => setWarningName("show")} onMouseLeave={() => setWarningName("hide")}>
-                Home
-                <Warning/>
-            </li>
-            <li onMouseEnter={showWarning} onMouseLeave={hideWarning}>
-                {language === "PT" ? "Banco de dados" : "Database"}
-                <Warning/>
-            </li>
-            <li onMouseEnter={showWarning} onMouseLeave={hideWarning}>
-                {language === "PT" ? "Sobre" : "About"}
-                <Warning/>
-            </li>
-            <li onMouseEnter={showWarning} onMouseLeave={hideWarning}>
+            <Link to={"/"}>
+                Home                
+            </Link>            
+            <Link to={"/about"}>
+                {language === "PT" ? "Sobre" : "About"}                
+            </Link>
+            <Link to={"/support"}>
                 {language === "PT" ? "Apoie!" : "Support!"}
-                <Warning/>
-            </li>
+                
+            </Link>
         </ul>     
         <div className="server-status">
             <p>{language === "PT" ? "Status do servidor:" : "Server status:"}</p>

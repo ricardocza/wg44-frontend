@@ -6,7 +6,8 @@ export const StyledClock = styled.div`
     align-items: center;    
     gap: 6px;
     padding: 4px 8px;
-
+    width: 120px;
+    font-size: 18px;
     border: 2px solid var(--color-grey400);
     border-radius: var(--b-radius8);
 
