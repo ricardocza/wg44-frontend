@@ -10,10 +10,13 @@ export const GlobalStyle = createGlobalStyle`
         --color-grey200: #808288;
         --color-grey100: #D9D9D9;
         --color-grey0: #f5f5f5;
+        --green: #1AD042;
+        --red: #b10909;
         --box-shadow: 0 0 20px -10px;
-        --header-height: 95px;
+        --header-height: 80px;
         --b-radius8: 8px;
-        --graph-height: 600px
+        --graph-height: 500px;
+        --graph-width: 900px;
     }
 
     *{
@@ -26,7 +29,7 @@ export const GlobalStyle = createGlobalStyle`
 
     #root {
         background-color: var(--bg-main);
-        height: 100vh;
+        min-height: 100vh;
         /* overflow-y: hidden; */
         & > header {
             height: var(--header-height);
@@ -35,6 +38,11 @@ export const GlobalStyle = createGlobalStyle`
 
     h2, h3, h4 {
         font-weight: 400;
+    }
+
+    a {
+        color: var(--color-grey0);
+        text-decoration: none;
     }
 
     main {

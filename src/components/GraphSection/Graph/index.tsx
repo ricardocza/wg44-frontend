@@ -8,14 +8,16 @@ interface iPrediction {
 }
 export const Graph = () => {
 
-    const {graphData} = useContext(GraphContext)
-    const [data, setData] = useState([] as iGraphData[])
+    const {graphData, plotList, dataCurrent, updatePlot} = useContext(GraphContext)
+
+    
     const [max, setMax] = useState(0 as number)
     const [min, setMin] = useState(9000000 as number)
     
+    
 
     useEffect(() => {
-        setData(graphData)                  
+      updatePlot()
         
     }, [graphData])
 
@@ -44,10 +46,16 @@ export const Graph = () => {
       };
 
     return (<StyledGraph>
-        <LineChart width={925} height={550} data={data}   >
-            <Line type="monotone" dataKey="closed_price" stroke="#8884d8" dot={{r:2}} activeDot={{r:4}} />
+        <LineChart width={850} height={500} data={dataCurrent}   >
+            <Line type="monotone" dataKey="current" stroke="#8884d8" dot={{r:0}} activeDot={{r:4}} />            
+            {plotList[0] ? <Line type="monotone" dataKey="pred_1" stroke="#942626" dot={{r:0}} activeDot={{r:2}} /> : <></>}
+            {plotList[1] ? <Line type="monotone" dataKey="pred_2" stroke="#945626" dot={{r:0}} activeDot={{r:2}} /> : <></>}
+            {plotList[2] ? <Line type="monotone" dataKey="pred_3" stroke="#8d9426" dot={{r:0}} activeDot={{r:2}} /> : <></>}
+            {plotList[3] ? <Line type="monotone" dataKey="pred_4" stroke="#26942a" dot={{r:0}} activeDot={{r:2}} /> : <></>}
+            {plotList[4] ? <Line type="monotone" dataKey="pred_5" stroke="#269094" dot={{r:0}} activeDot={{r:2}} /> : <></>}
+            {plotList[5] ? <Line type="monotone" dataKey="pred_6" stroke="#592694" dot={{r:0}} activeDot={{r:2}} /> : <></>}
             <CartesianGrid stroke="#393945" strokeDasharray="0" />
-            <XAxis dataKey="created_at" padding={{right: 100, left: 10}}/>
+            <XAxis dataKey="label" padding={{right: 25, left: 10}}/>
             <YAxis orientation="right" domain={[min, max]} padding={{top:50, bottom:50}}/>
             <Tooltip content={<CustomTooltip/>}/>
         </LineChart>

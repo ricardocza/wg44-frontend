@@ -4,7 +4,7 @@ import { styled } from "styled-components";
 export const StyledMenu = styled.header`
     background-color: #282727;
     color: white;    
-    height: 95px;
+    height: var(--header-height);
     font-size: 24px;
     font-weight: 400;
     display: flex;

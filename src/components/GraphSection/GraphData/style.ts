@@ -1,30 +1,35 @@
 import { styled } from "styled-components";
 
 export const StyledGraphData = styled.div`
+    text-align: center;    
     display: flex;
-    flex-direction: column;   
-    justify-content: space-between;
-    align-items: flex-end;
-    max-width: 320px;
-    width: 30%;
-    height: var(--graph-height);
-    margin: calc(1.5rem + 72px) 0 0;        
-    font-size: 20px;
-    
-    & > .predictions, .average-error {
-        background-color: var(--color-grey400);
-        border-radius: var(--b-radius8);
-        width: 100%;
-        height: fit-content;
-        padding: 36px 12px;
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-
-
-        & div {
-            display: flex;
-            justify-content: space-between;
+    justify-content: center;
+    & > table {
+        border-radius: 8px;
+        overflow: hidden;
+        border-spacing: 0;        
+        
+        & > thead {
+            background-color: var(--color-grey400);
+            
+            & > tr > th {
+                padding: 0.5rem 1rem;
+            }
         }
+        
+        & tbody {
+            line-height: 30px;
+            font-size: 18px;
+            background-color: var(--bg-main);
+            
+           
+        }
+    }
+
+    .green {
+        color: var(--green);
+    }
+    .red {
+        color: var(--red);
     }
 `
