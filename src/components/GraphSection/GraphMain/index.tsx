@@ -9,11 +9,6 @@ import { AssetSelected } from "../../Asset"
 
 export const GraphMain = () => {
     const {language} = useContext(UserContext)
-    const {updateTimer, loadData, countPredictions, selectedAsset} = useContext(GraphContext)
-    
-    useEffect(() => {
-        loadData()
-    },[])
     
     return <StyledGraphMain>
         <header>

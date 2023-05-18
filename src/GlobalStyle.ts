@@ -11,9 +11,9 @@ export const GlobalStyle = createGlobalStyle`
         --color-grey100: #D9D9D9;
         --color-grey0: #f5f5f5;
         --green: #1AD042;
-        --red: #9E2A2A;
+        --red: #b10909;
         --box-shadow: 0 0 20px -10px;
-        --header-height: 95px;
+        --header-height: 80px;
         --b-radius8: 8px;
         --graph-height: 500px;
         --graph-width: 900px;

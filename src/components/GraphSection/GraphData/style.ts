@@ -12,7 +12,7 @@ export const StyledGraphData = styled.div`
         & > thead {
             background-color: var(--color-grey400);
             
-            & > th {
+            & > tr > th {
                 padding: 0.5rem 1rem;
             }
         }
@@ -22,16 +22,6 @@ export const StyledGraphData = styled.div`
             font-size: 18px;
             background-color: var(--bg-main);
             
-            & tr {
-                position: relative;
-
-                & > input {
-                    position: absolute;
-                    left: 12px;
-                    top: 50%;
-                    transform: translateY(-50%);
-                }
-            }
            
         }
     }
