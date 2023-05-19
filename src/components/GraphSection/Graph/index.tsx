@@ -8,7 +8,7 @@ interface iPrediction {
 }
 export const Graph = () => {
 
-    const {graphData, plotList, dataCurrent, updatePlot} = useContext(GraphContext)
+    const {graphData, plotList, dataCurrent, updatePlot, updateTimer} = useContext(GraphContext)
 
     
     const [max, setMax] = useState(0 as number)

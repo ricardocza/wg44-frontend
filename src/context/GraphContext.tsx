@@ -26,6 +26,7 @@ interface iGraphContext {
     updatePlot: () => void
     dataCurrent: any
     setDataCurrent: any
+    updateTicker: () => void
 
 }
 interface iGraphProviderProps {
@@ -207,9 +208,30 @@ export const GraphProvider = ({children}: iGraphProviderProps) => {
           }
     }
 
+    const updateTicker = async () => {
+      setLoading(true)        
+      const currentData = await requestGraphData()
+      const currentMean = await requestMeanData()
+      
+      if (currentData === false || currentMean === false) {
+          setServerStatus("down")
+          setLoading(false)
+      }
+      else {
+          const data = currentData.data.results.sort((a:any, b:any)=> b.id < a.id ? 1 : -1)  
+          setCountPredictions(currentData.data.count)
+          setGraphData(data)        
+          setMean(currentMean)        
+          setServerStatus("up")
+          setLoading(false)
+      }
+          
+  }
+
     
     return <GraphContext.Provider 
         value={{
+            updateTicker,
             dataCurrent,
             setDataCurrent,
             updatePlot,

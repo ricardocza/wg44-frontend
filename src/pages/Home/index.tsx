@@ -15,28 +15,11 @@ export const Home = () => {
     setLoading, 
     setServerStatus,        
     setMean,
-    setUpdateTimer
+    setUpdateTimer,
+    updateTicker
 } = useContext(GraphContext)
   
-  const updateTicker = async () => {
-    setLoading(true)        
-    const currentData = await requestGraphData()
-    const currentMean = await requestMeanData()
-    
-    if (currentData === false || currentMean === false) {
-        setServerStatus("down")
-        setLoading(false)
-    }
-    else {
-        const data = currentData.data.results.sort((a:any, b:any)=> b.id < a.id ? 1 : -1)  
-        setCountPredictions(currentData.data.count)
-        setGraphData(data)        
-        setMean(currentMean)        
-        setServerStatus("up")
-        setLoading(false)
-    }
-        
-}
+  
 
   useEffect(()=> {
     updateTicker()

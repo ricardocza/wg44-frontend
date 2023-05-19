@@ -35,7 +35,7 @@ export const TickerSection = () => {
                 return  (
                 <button key={ticker.id} onClick={changeTicker} value={ticker.asset}>
                     <h4>{ticker.asset}</h4>
-                    <h4>{ticker.last_price}</h4>
+                    <h4>{(ticker.last_price).toLocaleString("pt-BR", {minimumFractionDigits: 2, maximumFractionDigits: 2})}</h4>
                 </button>)
                 })
                 :

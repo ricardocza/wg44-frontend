@@ -7,7 +7,7 @@ import { GraphContext } from "../../context/GraphContext";
 export const Clock = () => {
 
     const [time, setTime] = useState("" as string)
-    const {updateTimer, setUpdateTimer} = useContext(GraphContext)
+    const {updateTimer, setUpdateTimer, updatePlot, updateTicker} = useContext(GraphContext)
 
     const currentTime = () => {
         
@@ -30,6 +30,7 @@ export const Clock = () => {
         
         if(parseInt(time.split(":")[1]) !== updateTimer) {            
             setUpdateTimer(parseInt(time.split(":")[1]))            
+            updateTicker()            
         }
         setInterval(currentTime, 1000)        
         
