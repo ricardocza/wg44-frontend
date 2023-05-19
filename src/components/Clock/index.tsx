@@ -7,7 +7,7 @@ import { GraphContext } from "../../context/GraphContext";
 export const Clock = () => {
 
     const [time, setTime] = useState("" as string)
-    const {updateTimer, setUpdateTimer, updatePlot, updateTicker} = useContext(GraphContext)
+    const {updateTimer, setUpdateTimer, updatePlot, updateTicker, requestCurrentClose} = useContext(GraphContext)
 
     const currentTime = () => {
         
@@ -27,13 +27,18 @@ export const Clock = () => {
         return i;
     }
     useEffect(() => {
-        
-        if(parseInt(time.split(":")[1]) !== updateTimer) {            
-            setUpdateTimer(parseInt(time.split(":")[1]))            
-            updateTicker()            
+        const clockUpdate = async () => {
+            console.log("89ve754b89")
+            if(parseInt(time.split(":")[1]) !== updateTimer) {   
+                console.log("entrou")         
+                setUpdateTimer(parseInt(time.split(":")[1]))            
+                updateTicker()
+                requestCurrentClose()            
+            }
+            setInterval(currentTime, 1000)        
+
         }
-        setInterval(currentTime, 1000)        
-        
+        clockUpdate()
     }, [time])
     
     return (<StyledClock>
