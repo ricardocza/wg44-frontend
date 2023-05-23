@@ -10,14 +10,7 @@ import spinner from "../../imgs/spinner.png"
 export const Header = () => {
     const {language, setLanguage} = useContext(UserContext)
     const {serverStatus, loading} = useContext(GraphContext)
-    const [warningName, setWarningName] = useState("hide")
     
-    const showWarning = () => {
-        setWarningName("show")        
-    }
-    const hideWarning = () => {
-        setWarningName("hide")
-    }
     return( <StyledMenu>
         <ul>
             <Link to={"/"}>

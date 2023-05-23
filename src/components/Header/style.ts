@@ -115,4 +115,10 @@ export const StyledMenu = styled.header`
         from {transform: rotate(0deg)}
         to {transform: rotate(360deg)}
     }
+    @media (max-width: 1055px) {
+        .server-status {
+            display: none;
+        }
+        
+    }
 `

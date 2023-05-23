@@ -32,7 +32,7 @@ export const StyledTickerSection = styled.div`
             border: none;
             display: flex;
             justify-content: space-between;
-            
+            gap: 8px;
 
             & > h4 {
                 font-size: 24px;
