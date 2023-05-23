@@ -27,10 +27,8 @@ export const Clock = () => {
         return i;
     }
     useEffect(() => {
-        const clockUpdate = async () => {
-            console.log("89ve754b89")
-            if(parseInt(time.split(":")[1]) !== updateTimer) {   
-                console.log("entrou")         
+        const clockUpdate = async () => {            
+            if(parseInt(time.split(":")[1]) !== updateTimer) {                        
                 setUpdateTimer(parseInt(time.split(":")[1]))            
                 updateTicker()
                 requestCurrentClose()            
