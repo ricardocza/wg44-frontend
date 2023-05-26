@@ -5,16 +5,30 @@ export const StyledSupport = styled.div`
         width: 90%;
         max-width: 750px;
         height: 100%;
-        margin: 30px auto;
-        padding: 1rem 2rem;
+        margin: 30px auto;   
+        padding: 0;
+        overflow: hidden;
         border-radius: 8px;
         background-color: var(--color-grey300);
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         
-        & > p {
+        & > h1 {
+            width: 100%;
+            padding: 1rem 2rem;
             color: var(--color-grey100);
+            background-color: var(--color-grey400);
+        }
+        
+        & > div {
+            padding: 0 2rem 1rem;
+
+        }
+
+        & div > p {
+            color: var(--color-grey100);
+            line-height: 24px;
             font-size: large;
             
             & > a {
