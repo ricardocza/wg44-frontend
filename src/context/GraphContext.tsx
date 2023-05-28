@@ -98,7 +98,7 @@ export const GraphProvider = ({children}: iGraphProviderProps) => {
 
     const requestCurrentClose = async () => {
         try {
-            const tickerResponse = await api.get("list/current-close")
+            const tickerResponse = await api.get("/api/market/new/database/list/current-close")
             const sortedData = tickerResponse.data.sort((a:iTicker, b:iTicker) => {
                 const nameA = a.asset.toUpperCase()
                 const nameB = b.asset.toUpperCase()
@@ -116,7 +116,7 @@ export const GraphProvider = ({children}: iGraphProviderProps) => {
 
     const requestGraphData = async () => {
         try {
-            const response = await api.get(`${selectedAsset}/list`)                        
+            const response = await api.get(`/api/market/new/database/${selectedAsset}/list`)                        
             return response
         } catch (error: any) {
             console.log(error)            
@@ -126,7 +126,7 @@ export const GraphProvider = ({children}: iGraphProviderProps) => {
 
     const requestMeanData = async () => {
         try {
-            const meanResponse = await api.get(`${selectedAsset}/list/mean/`)            
+            const meanResponse = await api.get(`/api/market/new/database/${selectedAsset}/list/mean/`)            
             return meanResponse.data
         } catch (error:any) {
             console.log(error)            

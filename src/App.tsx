@@ -9,9 +9,20 @@ import { Route, Routes } from 'react-router-dom';
 import { Home } from './pages/Home';
 import { About } from './pages/About';
 import { Support } from './pages/Support';
+import { api } from './services/api';
 
 function App() {
+
+  const setSession = async () => {
+    const session = sessionStorage.getItem("currentSession")
   
+    if(!session) {
+      const response = await api.post("/api/visits/",{})      
+      sessionStorage.setItem("currentSession", "true")
+    }
+
+  }
+  setSession()
   return (
     <UserProvider>
       <GraphProvider>
