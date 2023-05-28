@@ -219,12 +219,7 @@ export const GraphProvider = ({children}: iGraphProviderProps) => {
       }
       else {
           const data = currentData.data.results.sort((a:iGraphData, b:iGraphData)=> b.id < a.id ? 1 : -1)  
-          data.forEach((element:iGraphData) => {
-            let timeArr = element.created_at.split(":")
-            timeArr[0] = parseInt(timeArr[0])-3 + ''
-            element.created_at = timeArr.join(":") 
-          });
-
+          
           setCountPredictions(currentData.data.count)
           setGraphData(data)        
           setMean(currentMean)        
