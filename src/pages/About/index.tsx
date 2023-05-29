@@ -26,6 +26,7 @@ export const About = () => {
                         <li>Melhorar seção "Apoie"</li>
                         <li>Melhorar visual em geral</li>
                         <li>Criar tutorial que explica cada parte do projeto</li>
+                        <li>Criar lógica para adicionar valor da média de erro diária</li>
                     </ul>
                 </div>
                 </>
@@ -44,6 +45,7 @@ export const About = () => {
                         <li>Improve "Support" section</li>
                         <li>Improve visuals in general</li>
                         <li>Create tutorial that explains each part of the project</li>
+                        <li>Create logic to add the value of the daily mean error</li>
                     </ul>
                 </div>
                 </>
