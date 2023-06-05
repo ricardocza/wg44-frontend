@@ -228,19 +228,18 @@ export const GraphProvider = ({ children }: iGraphProviderProps) => {
     setLoading(true);
 
     // const today: string = new Date().toISOString().split("T")[0]
-    let today: Date | string = new Date();
-    let tomorrow: any = new Date(today);
-    tomorrow
-      .setDate(today.getDate() + 1)
-      .toISOString()
-      .split("T")[0]!;
-    today = today.toISOString().split("T")[0];
+    const today: Date = new Date();
+    const tomorrow: Date = new Date(today);
+    tomorrow.setDate(today.getDate() + 1);
+
+    const todayString: string = today.toISOString().split("T")[0];
+    const tomorrowString: string = tomorrow.toISOString().split("T")[0];
 
     const currentData = await requestGraphData();
     const globalMean = await requestMeanData();
-    const todayMean = await requestMeanData(today, tomorrow);
+    const todayMean = await requestMeanData(todayString, tomorrowString);
 
-    if (currentData === false || globalMean === false || todayMean === false) {
+    if (currentData === false || globalMean === false) {
       setServerStatus("down");
       setLoading(false);
     } else {
