@@ -27,13 +27,23 @@ export const GraphData = () => {
       <table>
         <thead>
           <tr>
-            <th>Plotar</th>
-            <th>Período Estimado</th>
-            <th>Valor Estimado</th>
-            <th>Variação</th>
-            <th>Variação (%)</th>
-            <th>Média de Erro diária do período</th>
-            <th>Média de Erro global do período</th>
+            <th>{language === "PT" ? "Plotar" : "Plot"}</th>
+            <th>
+              {language === "PT" ? "Período Estimado" : "Estimated Period"}
+            </th>
+            <th>{language === "PT" ? "Valor Estimado" : "Estimated Value"}</th>
+            <th>{language === "PT" ? "Variação" : "Variation"}</th>
+            <th>{language === "PT" ? "Variação (%)" : "Variation (%)"}</th>
+            <th>
+              {language === "PT"
+                ? "Média de Erro diária"
+                : "Daily Average Error"}
+            </th>
+            <th>
+              {language === "PT"
+                ? "Média de Erro global"
+                : "Global Average Error"}
+            </th>
           </tr>
         </thead>
         <tbody>

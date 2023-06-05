@@ -227,7 +227,6 @@ export const GraphProvider = ({ children }: iGraphProviderProps) => {
   const updateTicker = async () => {
     setLoading(true);
 
-    // const today: string = new Date().toISOString().split("T")[0]
     const today: Date = new Date();
     const tomorrow: Date = new Date(today);
     tomorrow.setDate(today.getDate() + 1);
